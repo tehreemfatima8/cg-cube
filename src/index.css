@@ -1,0 +1,125 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0a0400;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Georgia', serif;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.ui-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.wish-text {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.4s ease, transform 1.4s ease;
+}
+
+.wish-text.visible {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.wish-text h1 {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  text-shadow:
+    0 0 40px #ffb347,
+    0 0 80px #ff8c00,
+    0 2px 6px rgba(0,0,0,0.9);
+  margin-bottom: 0.5rem;
+}
+
+.wish-text .sub {
+  font-size: clamp(0.75rem, 2vw, 1.1rem);
+  letter-spacing: 0.22em;
+  color: #ffd27f;
+  text-shadow: 0 0 20px rgba(255,180,50,0.7), 0 1px 4px rgba(0,0,0,0.9);
+  margin-bottom: 0.4rem;
+}
+
+.wish-text .sub2 {
+  font-size: clamp(0.65rem, 1.5vw, 0.9rem);
+  letter-spacing: 0.1em;
+  color: rgba(255, 220, 150, 0.65);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+}
+
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.click-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 180, 80, 0.5);
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+  animation: blink 2s ease-in-out infinite;
+}
+
+/*@keyframes blink {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}*/
+
+.click-hint.hidden { opacity:0; pointer-events: none; }
+
+.particles-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+.replay-btn {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 28px;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  font-family: 'Georgia', serif;
+  background: transparent;
+  border: 1px solid rgba(255, 180, 80, 0.4);
+  color: rgba(255, 200, 100, 0.85);
+  border-radius: 40px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease, background 0.2s ease;
+  z-index: 20;
+}
+
+.replay-btn.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.replay-btn:hover {
+  background: rgba(255, 150, 30, 0.12);
+}/*"gsap": "^3.14.2",
